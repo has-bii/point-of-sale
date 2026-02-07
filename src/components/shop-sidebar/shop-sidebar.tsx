@@ -27,7 +27,7 @@ export default async function ShopSidebar() {
   const shop = await getShopByUserId(session.user.id)
 
   if (!shop) {
-    redirect('/create-shop')
+    redirect('/dashboard/create-shop')
   }
 
   return (

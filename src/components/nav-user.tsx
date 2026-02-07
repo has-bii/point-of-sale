@@ -39,6 +39,7 @@ export function NavUser({ user }: NavUserProps) {
 
       if (error) {
         toast.error(error.message || 'Failed to log out')
+        return
       }
 
       toast.success('Logged out successfully')
