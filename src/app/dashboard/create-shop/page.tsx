@@ -1,9 +1,10 @@
 import { getShopByUserId } from '@/features/shop/cache/get-shop'
+import CreateShopForm from '@/features/shop/components/create-shop-form'
 import { auth } from '@/lib/auth'
 import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 
-export default async function Page() {
+export default async function CreateShopPage() {
   const session = await auth.api.getSession({
     headers: await headers(),
   })
@@ -12,16 +13,16 @@ export default async function Page() {
     redirect('/login')
   }
 
-  if (session.user.role === 'admin') {
-    redirect('/dashboard/admin')
-  }
-
-  // Get Shop
+  // Check if user has shop
   const shop = await getShopByUserId(session.user.id)
 
-  if (!shop) {
-    redirect('/dashboard/create-shop')
+  if (shop) {
+    redirect(`/dashboard/${shop.slug}`)
   }
 
-  redirect('/dashboard/shop')
+  return (
+    <main className="bg-muted/40 flex h-dvh w-full items-center justify-center p-4">
+      <CreateShopForm />
+    </main>
+  )
 }

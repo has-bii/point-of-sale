@@ -1,6 +1,7 @@
 import prisma from '@/lib/prisma'
 import { prismaAdapter } from 'better-auth/adapters/prisma'
 import { betterAuth } from 'better-auth/minimal'
+import { nextCookies } from 'better-auth/next-js'
 import { admin as adminPlugin } from 'better-auth/plugins'
 
 import { ac, admin } from './auth-permissions'
@@ -57,5 +58,6 @@ export const auth = betterAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     },
   },
-  plugins: [adminPlugin()],
+  hooks: {},
+  plugins: [adminPlugin(), nextCookies()],
 })
