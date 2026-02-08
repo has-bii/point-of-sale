@@ -1,4 +1,5 @@
 import { getShopByUserId } from '@/features/shop/cache/get-shop'
+import { Shop } from '@/generated/prisma/client'
 import { auth } from '@/lib/auth'
 import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
@@ -8,28 +9,16 @@ import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader } from '../ui/sid
 import { ShopSidebarContent } from './shop-sidebar-content'
 import ShopSidebarHeader from './shop-sidebar-header'
 
-export default async function ShopSidebar() {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  })
-
-  if (!session?.user) {
-    redirect('/login')
+interface Props {
+  shop: Shop
+  user: {
+    name: string
+    email: string
+    image?: string | null
   }
+}
 
-  const user = {
-    name: session.user.name,
-    email: session.user.email,
-    avatar: session.user.image || undefined,
-  }
-
-  // Get shop
-  const shop = await getShopByUserId(session.user.id)
-
-  if (!shop) {
-    redirect('/dashboard/create-shop')
-  }
-
+export default function ShopSidebar({ shop, user }: Props) {
   return (
     <Sidebar>
       <SidebarHeader>

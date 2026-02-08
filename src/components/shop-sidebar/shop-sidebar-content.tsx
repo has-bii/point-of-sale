@@ -14,12 +14,12 @@ interface NavItem {
 const items: NavItem[] = [
   {
     title: 'Dashboard',
-    url: '/dashboard/shop',
+    url: '/dashboard',
     icon: Home,
   },
   {
     title: 'Products',
-    url: '/dashboard/shop/products',
+    url: '/dashboard/products',
     icon: Package,
   },
 ]

@@ -1,27 +1,13 @@
-import { getShopByUserId } from '@/features/shop/cache/get-shop'
+import Header from '@/components/header'
 import { auth } from '@/lib/auth'
 import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 
-export default async function Page() {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  })
-
-  if (!session) {
-    redirect('/login')
-  }
-
-  if (session.user.role === 'admin') {
-    redirect('/dashboard/admin')
-  }
-
-  // Get Shop
-  const shop = await getShopByUserId(session.user.id)
-
-  if (!shop) {
-    redirect('/dashboard/create-shop')
-  }
-
-  redirect('/dashboard/shop')
+export default async function DashboardPage() {
+  return (
+    <>
+      <Header />
+      <main className="flex flex-1 flex-col gap-4 p-4">Dashboard</main>
+    </>
+  )
 }

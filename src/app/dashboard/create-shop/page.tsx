@@ -17,7 +17,7 @@ export default async function CreateShopPage() {
   const shop = await getShopByUserId(session.user.id)
 
   if (shop) {
-    redirect('/dashboard/shop')
+    redirect('/dashboard')
   }
 
   return (

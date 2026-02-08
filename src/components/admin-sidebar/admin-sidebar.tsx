@@ -17,11 +17,6 @@ export default async function AdminSidebar() {
     redirect('/login')
   }
 
-  // Check if user is admin
-  if (session.user.role !== 'admin') {
-    redirect('/dashboard/shop')
-  }
-
   const user = {
     name: session.user.name,
     email: session.user.email,

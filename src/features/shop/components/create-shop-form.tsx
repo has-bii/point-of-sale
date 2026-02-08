@@ -18,9 +18,9 @@ export default function CreateShopForm() {
 
   const onSubmit = (data: CreateShopInput) => {
     mutation.mutate(data, {
-      onSuccess: (data) => {
+      onSuccess: () => {
         toast.success('Shop created successfully')
-        router.push(`/dashboard/${data.data.slug}`)
+        router.refresh()
       },
     })
   }

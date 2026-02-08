@@ -14,7 +14,7 @@ interface NavItem {
 const items: NavItem[] = [
   {
     title: 'Dashboard',
-    url: '/dashboard/admin',
+    url: '/dashboard',
     icon: Home,
   },
   {
