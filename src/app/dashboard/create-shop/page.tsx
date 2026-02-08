@@ -17,11 +17,11 @@ export default async function CreateShopPage() {
   const shop = await getShopByUserId(session.user.id)
 
   if (shop) {
-    redirect(`/dashboard/${shop.slug}`)
+    redirect('/dashboard/shop')
   }
 
   return (
-    <main className="bg-muted/40 flex h-dvh w-full items-center justify-center p-4">
+    <main className="flex h-dvh w-full items-center justify-center p-4">
       <CreateShopForm />
     </main>
   )

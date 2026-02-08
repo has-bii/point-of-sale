@@ -1,4 +1,4 @@
-import { AppSidebar } from '@/components/app-sidebar'
+import AdminSidebar from '@/components/admin-sidebar/admin-sidebar'
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar'
 
 type Props = {
@@ -8,7 +8,7 @@ type Props = {
 export default function DashboardLayout({ children }: Props) {
   return (
     <SidebarProvider>
-      <AppSidebar />
+      <AdminSidebar />
       <SidebarInset>{children}</SidebarInset>
     </SidebarProvider>
   )

@@ -1,5 +1,5 @@
-import { ShopLoadingSkeleton } from '@/components/loading-skeletons'
+import PageLoading from '@/components/loading/page-loading'
 
 export default function Loading() {
-  return <ShopLoadingSkeleton />
+  return <PageLoading />
 }
